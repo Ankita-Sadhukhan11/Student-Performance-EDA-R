@@ -1,31 +1,36 @@
-# Student Performance EDA Using R
+# Student Performance Exploratory Data Analysis Using R
 
 ## Project Overview
 
-This project performs **Exploratory Data Analysis (EDA)** on a Student Performance dataset using **R**.
+This project performs Exploratory Data Analysis (EDA) on a Student Performance dataset using R.
 
-The purpose of this project is to understand the dataset, analyze student participation and performance, identify outliers, study relationships between variables, and summarize important patterns using statistical techniques.
+The main objective is to understand the dataset, analyze numerical and categorical variables, identify possible outliers, study the distribution of variables, and visualize relationships between different student activity variables.
 
 ## Dataset
 
-The dataset used in this project is taken from **Kaggle**.
+Dataset file:
 
-It contains information related to student academic activity and performance, including:
+`Studentdata.csv`
 
-- Gender
-- Nationality
-- Place of Birth
-- Grade
-- Topic
-- Semester
-- Raised Hands
-- Visited Resources
-- Announcements Viewed
-- Discussion Participation
-- Student Absence Days
-- Performance Class
+The dataset contains information about student academic activities and performance.
 
-### Performance Class
+Some important variables used in this project are:
+
+- `gender`
+- `NationalITy`
+- `PlaceofBirth`
+- `StageID`
+- `GradeID`
+- `SectionID`
+- `Topic`
+- `Semester`
+- `Relation`
+- `raisedhands`
+- `VisITedResources`
+- `AnnouncementsView`
+- `Discussion`
+- `StudentAbsenceDays`
+- `Class`
 
 The `Class` variable represents student performance:
 
@@ -33,210 +38,195 @@ The `Class` variable represents student performance:
 - `M` = Middle
 - `L` = Low
 
-## Objectives
+## Software Used
 
-The main objectives of this project are:
-
-- To explore and understand the dataset
-- To check for missing values
-- To calculate descriptive statistics
-- To study the distribution of numerical variables
-- To identify possible outliers
-- To study relationships between variables
-- To analyze different student performance categories
-
-## Methods Used
-
-The following EDA techniques are used in this project:
-
-- Dataset Inspection
-- Missing Value Analysis
-- Descriptive Statistics
-- Mean
-- Median
-- Minimum
-- Maximum
-- Variance
-- Standard Deviation
-- Histograms
-- Boxplots
-- Outlier Detection
-- Scatter Plots
-- Correlation Analysis
-- Bar Charts
-- Performance Class Comparison
-
-## Important R Functions Used
-
-```r
-read.csv()
-head()
-dim()
-names()
-str()
-summary()
-
-is.na()
-colSums()
-
-mean()
-median()
-min()
-max()
-var()
-sd()
-
-hist()
-boxplot()
-boxplot.stats()
-plot()
-cor()
-table()
-barplot()
-```
+- R
+- RStudio
 
 ## Project Files
 
 ```text
-Student-Performance-EDA-R/
+Student_Performance_R_Project
 │
 ├── project1.R
 ├── Studentdata.csv
 └── README.md
 ```
 
-## Data Analysis
+## Methods Used
+
+The following Exploratory Data Analysis techniques are used in this project:
 
 ### 1. Dataset Inspection
 
-The dataset is loaded and examined using:
+Functions used:
 
 ```r
-data <- read.csv("Studentdata.csv")
-
-head(data)
-dim(data)
-names(data)
-str(data)
-summary(data)
+head()
+dim()
+names()
+str()
+summary()
 ```
 
-## 2. Missing Value Analysis
+These functions are used to understand the size, structure, variables, and summary of the dataset.
 
-Missing values are checked using:
+### 2. Missing Value Detection
 
 ```r
 colSums(is.na(data))
 ```
 
-## 3. Descriptive Statistics
+This is used to check whether the dataset contains missing values.
 
-Descriptive statistics are calculated for numerical variables such as:
+### 3. Descriptive Statistics
 
-- Raised Hands
-- Visited Resources
-- Announcements Viewed
-- Discussion
-
-The analysis includes:
+The following statistical measures are calculated:
 
 - Mean
 - Median
 - Minimum
 - Maximum
 - Variance
-- Standard Deviation
+- Standard deviation
 
-## 4. Distribution Analysis
+Functions used:
 
-Histograms are used to understand the distribution of numerical variables such as:
+```r
+mean()
+median()
+min()
+max()
+var()
+sd()
+```
+
+These are applied mainly to:
+
+- Raised hands
+- Visited resources
+- Announcement views
+- Discussion participation
+
+### 4. Distribution Analysis
+
+Histograms are used to study the distribution of numerical variables.
+
+```r
+hist()
+```
+
+Examples include:
+
+- Distribution of Raised Hands
+- Distribution of Visited Resources
+- Distribution of Discussion
+
+### 5. Outlier Detection
+
+Boxplots are used to identify possible outliers.
+
+```r
+boxplot()
+boxplot.stats()
+```
+
+Outliers are examined for variables such as:
 
 - Raised Hands
 - Visited Resources
+- Discussion
 
-## 5. Outlier Analysis
+### 6. Relationship Visualization
 
-Boxplots are used to identify possible outliers in numerical variables.
+Scatter plots are used to visually study relationships between numerical variables.
 
-The project analyzes outliers in:
+```r
+plot()
+```
 
-- Raised Hands
-- Visited Resources
-
-## 6. Relationship Analysis
-
-Scatter plots are used to study relationships between numerical variables.
-
-The project studies relationships such as:
+Examples:
 
 - Raised Hands vs Visited Resources
 - Discussion vs Raised Hands
+- Announcements View vs Visited Resources
 
-Simple correlation analysis is also used to measure the relationship between selected numerical variables.
+### 7. Categorical Analysis
 
-## 7. Student Performance Analysis
+Frequency tables are created using:
 
-The `Class` variable is used to analyze student performance.
+```r
+table()
+```
 
-Students are divided into:
+Categorical variables analyzed include:
 
-- High Performance
-- Middle Performance
-- Low Performance
+- Performance Class
+- Gender
+- Student Absence Days
+- Semester
 
-Bar charts are used to compare the number of students in each performance category.
+### 8. Bar Charts
 
-## 8. Performance Class Comparison
+Bar charts are used to visualize categorical variables.
 
-Boxplots are used to compare:
+```r
+barplot()
+```
 
-- Raised Hands across performance classes
-- Visited Resources across performance classes
+Examples include:
 
-This helps in understanding how student participation and resource usage differ among High, Middle, and Low performing students.
-
-## 9. Categorical Analysis
-
-Categorical variables are also analyzed using frequency tables and bar charts.
-
-The project includes analysis of:
-
+- Student Performance Classes
 - Gender Distribution
 - Student Absence Distribution
 - Semester Distribution
 
+### 9. Group Comparison
+
+Boxplots are also used to compare student activity according to performance class.
+
+Examples:
+
+```r
+raisedhands ~ Class
+```
+
+and
+
+```r
+VisITedResources ~ Class
+```
+
+This helps compare classroom participation and resource usage among High, Middle, and Low performing students.
+
+## Main Objectives
+
+The project aims to:
+
+- Understand the structure of the student dataset.
+- Calculate basic descriptive statistics.
+- Study the distribution of numerical variables.
+- Detect possible outliers.
+- Visualize relationships between variables.
+- Analyze student performance categories.
+- Compare student activities across performance groups.
+
 ## Result
 
-Exploratory Data Analysis was successfully performed on the Student Performance dataset using R.
+The project successfully performs Exploratory Data Analysis on the Student Performance dataset using R.
 
-The analysis helped in understanding:
+Different statistical functions and graphical techniques such as histograms, boxplots, scatter plots, and bar charts are used to understand student behavior and academic performance.
 
-- Student participation patterns
-- Distribution of numerical variables
-- Possible outliers
-- Relationships between student activities
-- Differences among High, Middle, and Low performing students
-- Gender, semester, and absence distributions
+## Conclusion
 
-## Technologies Used
+Exploratory Data Analysis helps in understanding the important characteristics of a dataset before performing advanced statistical or machine learning analysis.
 
-- R
-- RStudio
-- CSV
-- Kaggle
-- GitHub
-
-## How to Run
-
-1. Download or clone this repository.
-2. Open `project1.R` in RStudio.
-3. Keep `Studentdata.csv` in the same project folder.
-4. Run the R script.
-5. View the statistical outputs in the Console.
-6. View the graphs in the Plots section of RStudio.
+This project demonstrates how R can be used to summarize, visualize, and analyze student performance data in a simple and effective way.
 
 ## Author
 
 **Ankita Sadhukhan**  
 MCA Data Science  
-Chandigarh University
+Chandigarh University  
+Section: 26MCD_1A  
+UID: 26MCD10004
